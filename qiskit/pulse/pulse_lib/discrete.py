@@ -189,6 +189,18 @@ def gaussian(duration: int, amp: complex, sigma: float, name: Optional[str] = No
                                    zeroed_width=zeroed_width, rescale_amp=rescale_amp,
                                    name=name)
 
+_sampled_sin_gaussian_pulse = samplers.midpoint(continuous.sin_gaussian)
+
+def sin_gaussian(duration: int, amp: complex, sigma: float, freq: float, name: Optional[str] = None,
+                zero_ends: bool = True) -> 'SamplePulse':
+    """Bla bla bla
+    """
+    center = duration/2
+    zeroed_width = duration if zero_ends else None
+    rescale_amp = bool(zero_ends)
+    return _sampled_sin_gaussian_pulse(duration, amp, center, sigma, freq,
+                                      zeroed_width=zeroed_width, rescale_amp=rescale_amp,
+                                      name=name)
 
 _sampled_gaussian_deriv_pulse = samplers.midpoint(continuous.gaussian_deriv)
 
